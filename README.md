@@ -133,7 +133,7 @@ asynchronous so it doesn't add unnecessary latency to the UI.
 The SDImageCache class provides a singleton instance for convenience but you can create your own
 instance if you want to create separated cache namespace.
 
-To lookup the cache, you use the imageForKey: method. If the method returns nil, it means the cache
+To lookup the cache, you use the `queryDiskCacheForKey:done:` method. If the method returns nil, it means the cache
 doesn't currently own the image. You are thus responsible for generating and caching it. The cache
 key is an application unique identifier for the image to cache. It is generally the absolute URL of
 the image.
@@ -246,6 +246,12 @@ pod 'SDWebImage', '~>3.6'
 Open the "Build Settings" tab, in the "Linking" section, locate the "Other Linker Flags" setting and add the "-ObjC" flag:
 
 ![Other Linker Flags](http://dl.dropbox.com/u/123346/SDWebImage/10_other_linker_flags.jpg)
+
+Alternatively, if this causes compilation problems with frameworks that extend optional libraries, such as Parse,  RestKit or opencv2, instead of the -ObjC flag use:
+
+```
+-force_load SDWebImage.framework/Versions/Current/SDWebImage
+```
 
 ### Import headers in your source files
 
