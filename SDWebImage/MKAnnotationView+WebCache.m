@@ -14,7 +14,7 @@ static char operationKey;
 
 @implementation MKAnnotationView (WebCache)
 
-- (NSURL *)imageURL;
+- (NSURL *)imageURL
 {
     return objc_getAssociatedObject(self, &imageURLKey);
 }

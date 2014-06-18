@@ -14,7 +14,7 @@ static char operationKey;
 
 @implementation UIButton (WebCache)
 
-- (NSURL *)currentImageURL;
+- (NSURL *)currentImageURL
 {
     NSURL *url = self.imageURLStorage[@(self.state)];
 
@@ -26,7 +26,7 @@ static char operationKey;
     return url;
 }
 
-- (NSURL *)imageURLForState:(UIControlState)state;
+- (NSURL *)imageURLForState:(UIControlState)state
 {
     return self.imageURLStorage[@(state)];
 }
@@ -136,7 +136,7 @@ static char operationKey;
     }
 }
 
-- (NSMutableDictionary *)imageURLStorage;
+- (NSMutableDictionary *)imageURLStorage
 {
     NSMutableDictionary *storage = objc_getAssociatedObject(self, &imageURLStorageKey);
     if (!storage)
